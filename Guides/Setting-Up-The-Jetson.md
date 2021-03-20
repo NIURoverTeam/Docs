@@ -8,6 +8,8 @@ There are 3 ways to Power the Jetson Nano:
 2. The Micro USB port. There's a 2-pin jumper that needs to be removed, and the powersupply must supply at least 5V at 1.5A. The Jetson is very particular about its power and many 5V power supplies won't actually work because of transmission losses.
 3. Two 5V pins on the GPIO. Each can support 1.5A independently, or up to 3A total when combined. Allows the board to draw the maximum amount of power, but requires jumper pins and a reliable power source (DON'T CONNECT DIRECTLY TO 22.2V LIPOS)
 
+## Installation and Setup
+
 1. Follow the [Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit) to get the operating system installed.
 1. Put the SD card in and power up the Nano. Create a user and all that.
 2. Install any updates that need to be installed.
