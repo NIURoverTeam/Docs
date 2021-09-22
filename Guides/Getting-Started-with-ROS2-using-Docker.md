@@ -38,93 +38,12 @@ It **should** work for most distributions of Linux. MacOS hasn't been tested yet
 need some tweaking. I'll note when I'm giving Windows specific instructions, Linux users you
 can skip these parts.
 
-## Getting Windows Ready
+## Getting Your Computer Ready
 
-**Note: This is one of those sections Linux users can skip**
-
-## Enabling Windows Subsystem For Linux 2 (WSL2)
-
-> For reference, these instructions are adapted from the
-[Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-
-First things first, we're going to enable something called WSL2. It lets you run a full Linux
-Distribution and Kernel on Windows 10. Note: you NEED to have Windows 10 Version 2004 or higher
-for this to work. Otherwise, you'll only be able to run WSL1, which will NOT work for this. If
-you can't update from the "Check for Updates" page in Settings, try the 
-[Windows 10 Update Assistant](https://www.microsoft.com/en-us/software-download/windows10).
-
-Assuming you're running an acceptable version of Windows 10, we next need to turn on an 
-optional Windows Feature. Open the Start Menu and search for "Turn Windows features on or off".
-Select the corresponding option, find "Windows Subsystem for Linux" in the list, and check it.
-You'll likely have to restart your computer after it completes. If it's already checked, great!
-
-Next, install 
-[Ubuntu from the Microsoft Store](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab). 
-You may also want to grab the "Windows Terminal (Preview)" while you're there.
-
-Once Ubuntu is installed and ready to go, hit `Win + R` and type `cmd`. Hit enter, then run 
-this command: `wsl --set-version Ubuntu 2`. This will make sure you're running Ubuntu in WSL2
-and not WSL1.
-
-Now you can launch Ubuntu, either directly or inside the Windows Terminal, and set up the 
-default user.
-
-## Install an X-server
-
-X-servers are how Linux displays graphical applications. In order to do this on Windows, we need
-to install an X-server, since Windows does not include one by default.
-
-First, install VcXsrv from [here](https://sourceforge.net/projects/vcxsrv/). Once it's done
-installing, launch it (it's named XLaunch) and use all the default parameters in the 
-configuration dialog, except for the following modifications: uncheck "Native opengl," and
-check "Disable access control." You'll have to do this every time you want to use graphical
-applications.
-
-![](https://i.imgur.com/1EJWKh5.png)
-
-In WSL, you'll need to run 
-`export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0`. 
-Either run it every time you want to launch Docker, or add it to your `~/.bashrc` so it gets run 
-automatically.
-
-If you'd like to confirm your Xserver is set up correctly, launch it, open a terminal, and run the
-following commands:
-```
-sudo apt update; sudo apt install -y x11-apps
-xeyes
-```
-If everything is functioning, you should have a window with a pair of eyes that follow the cursor!
-
-# Install Docker
-
-Now, we need to install Docker on our machine or in WSL.
-
-## Docker Account
-
-Regardless of the operating system you're using, you'll need to register for a docker account 
-at [hub.docker.com](https://hub.docker.com). Yuck, I know, but it is what it is.
-
-## Docker Engine Installation
-
-Now, we get to install the Docker Engine. Follow the instructions 
-[here](https://docs.docker.com/engine/install/ubuntu/), using the "Install using the repository"
-instructions, preferably, to do that. NOTE: REGARDLESS OF WHETHER YOU'RE USING WINDOWS OR 
-LINUX, INSTALL THE LINUX VERSION. If you're on Windows, follow the Ubuntu instructions **inside**
-WSL. If you're on Ubuntu, just do it in your terminal. If you're on a different distro, like 
-Fedora, find the appropriate page on the left.
-
-Once you've completed the instructions and installed docker, go to 
-[the post-installation steps](https://docs.docker.com/engine/install/linux-postinstall/) 
-and follow "Manage Docker as a non-root user".
-
-**Note for windows users: WSL doesn't natively support the systemd service that docker uses 
-to automatically start, so we'll have to do it ourselves. To start docker for the current 
-instance, run `sudo service docker start`. Then you should be able to run docker commands 
-as expected. For it to automatically start with WSL, run `sudo crontab -e` and add this line
-to the very end of the file: `@reboot service docker start`.**
-
-Now, to test our docker setup. First, run `docker login` and provide your Docker Hub 
-credentials. Then, run `docker run hello-world` to make sure everything is working properly.
+Follow the following guides to get set up:
+1. [Setting Up WSL2](https://github.com/NIURoverTeam/Docs/blob/main/Guides/Setting-Up-WSL2.md) (skip if you're a Mac or Linux user)
+1. [Installing an X-server](https://github.com/NIURoverTeam/Docs/blob/main/Guides/Installing-an-X-Server.md) (skip if you're a Linux user)
+1. [Installing Docker](https://github.com/NIURoverTeam/Docs/blob/main/Guides/Installing-Docker.md)
 
 # Run ROS2 in Docker
 
