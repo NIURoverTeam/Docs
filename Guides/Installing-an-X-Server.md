@@ -1,8 +1,9 @@
-## Install an X-server
+# Install an X-server
 
-X-servers are how Linux displays graphical applications. In order to do this on Windows, we need
-to install an X-server, since Windows does not include one by default.
+X-servers are how Linux displays graphical applications. In order to do this not on Linux, we need
+to install an X-server manually.
 
+### If using Windows
 First, install VcXsrv from [here](https://sourceforge.net/projects/vcxsrv/). Once it's done
 installing, launch it (it's named XLaunch) and use all the default parameters in the 
 configuration dialog, except for the following modifications: uncheck "Native opengl," and
@@ -17,7 +18,13 @@ In WSL, you'll need to run
 Either run it every time you want to launch Docker, or add it to your `~/.bashrc` so it gets run 
 automatically.
 
-If you'd like to confirm your Xserver is set up correctly, launch it, open a terminal, and run the
+### If using MacOS
+
+***placeholder***
+
+### Testing your X-Server
+
+If you'd like to confirm your X-server is set up correctly, launch it, open a terminal, and run the
 following commands:
 ```
 sudo apt update; sudo apt install -y x11-apps
