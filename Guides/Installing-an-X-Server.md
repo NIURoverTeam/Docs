@@ -4,7 +4,7 @@ X-servers are how Linux displays graphical applications. In order to do this not
 to install an X-server manually.
 
 ### If using Windows
-First, install VcXsrv from [here](https://sourceforge.net/projects/vcxsrv/). Once it's done
+For Windows users, first install VcXsrv from [here](https://sourceforge.net/projects/vcxsrv/). Once it's done
 installing, launch it (it's named XLaunch) and use all the default parameters in the 
 configuration dialog, except for the following modifications: uncheck "Native opengl," and
 check "Disable access control." You'll have to do this every time you want to use graphical
