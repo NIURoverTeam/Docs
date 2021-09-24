@@ -24,7 +24,7 @@ For MacOS, we have only one functional option: XQuartz.  It's based on the origi
 
 With that, X11 applications will pretty much automatically trigger XQuartz to start, so there's nothing you need to do.
 
-### Testing your X-Server
+### Testing your X-Server in WSL or Linux
 
 If you'd like to confirm your X-server is set up correctly, launch it, open a terminal, and run the
 following commands:
