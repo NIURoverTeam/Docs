@@ -20,7 +20,7 @@ automatically.
 
 ### If using MacOS
 
-For MacOS, we have only one functional option: XQuartz.  It's based on the original libraries Apple packaged in Mac OSX 10.5 to 10.7 (which was subsequently removed).  It's not in the app store, but it is a signed package so installing it is fairly simple.  Just head to https://xquartz.org and download the stable `.dmg` file.  For Big Sur, you may have to log out and back in after installing for the module to attach to the terminal properly.
+For MacOS, we have only one functional option: XQuartz.  It's based on the original libraries Apple packaged in Mac OSX 10.5 to 10.7 (which was subsequently removed).  It's not in the app store, but it is a signed package so installing it is fairly simple.  Just head to http://xquartz.org and download the stable `.dmg` file.  For Big Sur, you may have to log out and back in after installing for the module to attach to the terminal properly.
 
 With that, X11 applications will pretty much automatically trigger XQuartz to start, so there's nothing you need to do.
 
