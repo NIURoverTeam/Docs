@@ -15,8 +15,8 @@ applications (unless you save the configurations, in which case you'd run the ex
 
 In WSL, you'll need to run 
 `export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):0.0`. 
-Either run it every time you want to launch Docker, or add it to your `~/.bashrc` so it gets run 
-automatically.
+Either run it every time you want to do graphics stuff, or add it to your `~/.bashrc` so it gets run 
+automatically (recommended).
 
 ### If using MacOS
 
