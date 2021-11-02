@@ -7,9 +7,9 @@ to install an X-server manually.
 For Windows users, first install VcXsrv from [here](https://sourceforge.net/projects/vcxsrv/). Once it's done
 installing, launch it (it's named XLaunch) and use all the default parameters in the 
 configuration dialog, except for the following modifications: uncheck "Native opengl," and
-check "Disable access control." You'll have to do this every time you want to use graphical
-applications (unless you save the configurations, in which case you'd run the executable 
-`config.xlaunch` from your Start menu to boot the X-server with your saved settings).
+check "Disable access control." You'll either have to do this every time you want to use graphical
+applications, or you can save the configurations, in which case you'd run the executable 
+`config.xlaunch` from your Start menu to boot the X-server with your saved settings (recommended).
 
 ![](https://i.imgur.com/1EJWKh5.png)
 
