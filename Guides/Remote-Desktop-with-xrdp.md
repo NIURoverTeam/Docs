@@ -6,11 +6,21 @@
 RDP (Microsoft's Remote Desktop Protocol) from any operating systems. It allows multiple users to
 log in at the same time, which is a perk over TeamViewer and NoMachine (tools we've used in the past).
 
+# Installation
+
+*  Windows 10
+   * There's nothing to install - Windows 10 starts with it! The program is called `Remote Desktop Connection`.
+* Windows 11
+   * TODO
+* MacOS
+   * Install Microsoft Remote Desktop from the app store.
+* Linux
+   * TODO
+
+
 # Connecting to Shatterdome while on NIU's network
 
-If you're a Windows 10 user, xrdp will already be installed and enabled. If you don't have that
-operating system, jump below for installation instructions. Once you have it installed, use the
-following instructions (from 
+Once you have it installed, use the following instructions (from 
 [here](https://linuxconfig.org/ubuntu-20-04-remote-desktop-access-from-windows-10))
 (tested on Windows 10):
 
@@ -66,7 +76,3 @@ drakeprovost@shatterdome:~ $
 ```
 
 `Nomachine should connect to 127.0.0.1, or localhost, not shatterdome's ip`
-
-# Installing xrdp on other operating systems
-
-> TODO
