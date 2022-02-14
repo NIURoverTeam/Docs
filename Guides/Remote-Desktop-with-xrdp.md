@@ -48,54 +48,58 @@ step 1:
 > ![image](https://user-images.githubusercontent.com/19244666/151674113-18912c81-adec-4c30-9829-361e16e9ea9d.png)
 
 # Connecting to Shatterdome when not on NIU's network
-Notes: 
-```
-mddmprovost@DESKTOP-21RFLUN:~ $ ssh -Y z1872355@hopper.cs.niu.edu -L 4000:localhost:4000
-z1872355@hopper.cs.niu.edu's password:
-Warning: No xauth data; using fake authentication data for X11 forwarding.
-Linux hopper 4.19.0-18-amd64 #1 SMP Debian 4.19.208-1 (2021-09-29) x86_64
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-You have mail.
-Last login: Sun Jan  2 20:30:52 2022 from 73.50.58.118
-z1872355@hopper:~ $ ssh -X drakeprovost@10.156.209.2 -L 4000:localhost:4000
-drakeprovost@10.156.209.2's password:
-Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-41-generic x86_64)
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-341 updates can be applied immediately.
-To see these additional updates run: apt list --upgradable
-Your Hardware Enablement Stack (HWE) is supported until April 2025.
-*** System restart required ***
-Last login: Sun Jan  2 22:51:56 2022 from 10.158.56.120
-drakeprovost@shatterdome:~ $
-```
 
-`Nomachine should connect to 127.0.0.1, or localhost, not shatterdome's ip`
+This section is WIP, we haven't nailed down something that works great. Here's notes for things we've tried:
+1. Using NIU's AnyConnect VPN (works, but is a pain to install). Steps:
+   1. Install the `Cisco AnyConnect Secure Mobility Client`. I'm not sure if there's multiple ways to do this, but when Drake was setting it up he had to visit the Tech Desk in the Founders Library so they could install it on his laptop.
+   2. After you (somehow) obtain it, launch the client and connect to `secure.niu.edu`. It will require a sign-in of your NIU account
+   3. After the connection is established, connect to Shatterdome as if you were in NIU's network (i.e. using `10.156.209.2` in xrdp).
+1. Port forwarding and using Turing/Hopper's static IP to connect to NIU's network (Drake hasn't been able to get it working in testing). Here's some notes related to his attempts:
+   1. ```
+      mddmprovost@DESKTOP-21RFLUN:~ $ ssh -Y z1872355@hopper.cs.niu.edu -L 4000:localhost:4000
+      z1872355@hopper.cs.niu.edu's password:
+      Warning: No xauth data; using fake authentication data for X11 forwarding.
+      Linux hopper 4.19.0-18-amd64 #1 SMP Debian 4.19.208-1 (2021-09-29) x86_64
+      The programs included with the Debian GNU/Linux system are free software;
+      the exact distribution terms for each program are described in the
+      individual files in /usr/share/doc/*/copyright.
+      Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+      permitted by applicable law.
+      You have mail.
+      Last login: Sun Jan  2 20:30:52 2022 from 73.50.58.118
+      z1872355@hopper:~ $ ssh -X drakeprovost@10.156.209.2 -L 4000:localhost:4000
+      drakeprovost@10.156.209.2's password:
+      Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-41-generic x86_64)
+       * Documentation:  https://help.ubuntu.com
+       * Management:     https://landscape.canonical.com
+       * Support:        https://ubuntu.com/advantage
+      341 updates can be applied immediately.
+      To see these additional updates run: apt list --upgradable
+      Your Hardware Enablement Stack (HWE) is supported until April 2025.
+      *** System restart required ***
+      Last login: Sun Jan  2 22:51:56 2022 from 10.158.56.120
+      drakeprovost@shatterdome:~ $
+      ```
+      1. `Nomachine should connect to 127.0.0.1, or localhost, not shatterdome's ip`
+   1. In PowerShell, I get (note the 'Permission denied'):
+      ```
+      PS C:\Users\mddmp> ssh -Y z1872355@turing.cs.niu.edu -L 4000:localhost:4000
+      The authenticity of host 'turing.cs.niu.edu (131.156.224.99)' can't be established.
+      ECDSA key fingerprint is SHA256:6N6o7ZGEsqYp2qDM1vJsA4786NHRgZIyxG6sHYqesHg.
+      Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+      Warning: Permanently added 'turing.cs.niu.edu,131.156.224.99' (ECDSA) to the list of known hosts.
+      z1872355@turing.cs.niu.edu's password:
+      bind [127.0.0.1]:4000: Permission denied
+      channel_setup_fwd_listener_tcpip: cannot listen to port: 4000
+      Could not request local forwarding.
+      Linux turing 5.10.0-10-amd64 #1 SMP Debian 5.10.84-1 (2021-12-08) x86_64
 
-In PowerShell, I get (note the 'Permission denied'):
-```
-PS C:\Users\mddmp> ssh -Y z1872355@turing.cs.niu.edu -L 4000:localhost:4000
-The authenticity of host 'turing.cs.niu.edu (131.156.224.99)' can't be established.
-ECDSA key fingerprint is SHA256:6N6o7ZGEsqYp2qDM1vJsA4786NHRgZIyxG6sHYqesHg.
-Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
-Warning: Permanently added 'turing.cs.niu.edu,131.156.224.99' (ECDSA) to the list of known hosts.
-z1872355@turing.cs.niu.edu's password:
-bind [127.0.0.1]:4000: Permission denied
-channel_setup_fwd_listener_tcpip: cannot listen to port: 4000
-Could not request local forwarding.
-Linux turing 5.10.0-10-amd64 #1 SMP Debian 5.10.84-1 (2021-12-08) x86_64
+      The programs included with the Debian GNU/Linux system are free software;
+      the exact distribution terms for each program are described in the
+      individual files in /usr/share/doc/*/copyright.
 
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-You have mail.
-Last login: Wed Feb  9 22:16:57 2022 from 10.167.5.157
-```
+      Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+      permitted by applicable law.
+      You have mail.
+      Last login: Wed Feb  9 22:16:57 2022 from 10.167.5.157
+      ```
