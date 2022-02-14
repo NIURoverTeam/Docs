@@ -76,3 +76,26 @@ drakeprovost@shatterdome:~ $
 ```
 
 `Nomachine should connect to 127.0.0.1, or localhost, not shatterdome's ip`
+
+In PowerShell, I get (note the 'Permission denied'):
+```
+PS C:\Users\mddmp> ssh -Y z1872355@turing.cs.niu.edu -L 4000:localhost:4000
+The authenticity of host 'turing.cs.niu.edu (131.156.224.99)' can't be established.
+ECDSA key fingerprint is SHA256:6N6o7ZGEsqYp2qDM1vJsA4786NHRgZIyxG6sHYqesHg.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'turing.cs.niu.edu,131.156.224.99' (ECDSA) to the list of known hosts.
+z1872355@turing.cs.niu.edu's password:
+bind [127.0.0.1]:4000: Permission denied
+channel_setup_fwd_listener_tcpip: cannot listen to port: 4000
+Could not request local forwarding.
+Linux turing 5.10.0-10-amd64 #1 SMP Debian 5.10.84-1 (2021-12-08) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+You have mail.
+Last login: Wed Feb  9 22:16:57 2022 from 10.167.5.157
+```
