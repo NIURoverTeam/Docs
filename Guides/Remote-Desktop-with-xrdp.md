@@ -52,8 +52,9 @@ step 1:
 This section is WIP, we haven't nailed down something that works great. Here's notes for things we've tried:
 1. Using NIU's AnyConnect VPN (works, but is a pain to install). Steps:
    1. Install the `Cisco AnyConnect Secure Mobility Client`. I'm not sure if there's multiple ways to do this, but when Drake was setting it up he had to visit the Tech Desk in the Founders Library so they could install it on his laptop.
-   2. After you (somehow) obtain it, launch the client and connect to `secure.niu.edu`. It will require a sign-in of your NIU account
-   3. After the connection is established, connect to Shatterdome as if you were in NIU's network (i.e. using `10.156.209.2` in xrdp).
+      1. Supposedly it can be downloaded from [here](https://www.niu.edu/doit/services/network/vpn.shtml). Drake hasn't tried it but it probably works.
+   3. After you (somehow) obtain it, launch the client and connect to `secure.niu.edu`. It will require a sign-in of your NIU account
+   4. After the connection is established, connect to Shatterdome as if you were in NIU's network (i.e. using `10.156.209.2` in xrdp).
 1. Port forwarding and using Turing/Hopper's static IP to connect to NIU's network (Drake hasn't been able to get it working in testing). Here's some notes related to his attempts:
    1. ```
       mddmprovost@DESKTOP-21RFLUN:~ $ ssh -Y z1872355@hopper.cs.niu.edu -L 4000:localhost:4000
