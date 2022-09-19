@@ -14,8 +14,7 @@ The webots world can be opened with the following command:
 
 In a second terminal launch cartographer using the following command:
 
-`export TURTLEBOT3_MODEL='burger'
-ros2 launch turtlebot3_navigation2.launch.py use_sim_time:=true map:=$(ros2 pkg prefix webots_ros2_turtlebot --share)/resource/turtlebot3_burger_example_map.yaml`
+`ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=true`
     
 #### Using Cartographer for SLAM
 
