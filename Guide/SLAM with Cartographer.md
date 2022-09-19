@@ -1,6 +1,3 @@
-Task - Implement SLAM in Webots
-	Must get Nav2 installed
-
 ## How to install and run NAV2 Cartographer
 ### Instructions for Ubuntu
 #### Installing cartographer
