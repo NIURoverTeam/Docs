@@ -1,6 +1,6 @@
-## How to install and run NAV2 Cartographer
+## How to install and run NAV2 RVIZ2
 ### Instructions for Ubuntu
-#### Installing cartographer
+#### Installing turtle bot 3
 
 `sudo apt install ros-foxy-turtlebot3-cartographer`
 
@@ -14,7 +14,9 @@ The webots world can be opened with the following command:
 
 In a second terminal launch cartographer using the following command:
 
-`ros2 launch turtlebot3_cartographer cartographer.launch.py use_sim_time:=true`
+`export TURTLEBOT3_MODEL='burger' ros2 launch turtlebot3_navigation2 navigation2.launch.py \
+use_sim_time:=true \
+map:=$(ros2 pkg prefix webots_ros2_turtlebot --share)/resource/turtlebot3_burger_example_map.yaml`
     
 #### Using Cartographer for SLAM
 
